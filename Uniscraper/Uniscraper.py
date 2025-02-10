@@ -16,11 +16,13 @@ from pdfminer.pdfpage import PDFPage
 import docx
 from pptx import Presentation
 from selenium.webdriver.chrome.service import Service
+import platform
 
 options = Options()
 options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
+if platform.system() == 'Linux':
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def tag_visible(element):
