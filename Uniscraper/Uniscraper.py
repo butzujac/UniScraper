@@ -7,7 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options, Service
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.layout import LAParams
@@ -15,6 +15,7 @@ from pdfminer.converter import TextConverter
 from pdfminer.pdfpage import PDFPage
 import docx
 from pptx import Presentation
+from selenium.webdriver.chrome.service import Service
 
 options = Options()
 options.add_argument('--headless')
