@@ -7,7 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options, Service
 from webdriver_manager.chrome import ChromeDriverManager
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.layout import LAParams
@@ -16,10 +16,11 @@ from pdfminer.pdfpage import PDFPage
 import docx
 from pptx import Presentation
 
-
 options = Options()
 options.add_argument('--headless')
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def tag_visible(element):
     """A helper function to filter visible tags"""
